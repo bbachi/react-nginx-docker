@@ -1,5 +1,5 @@
 # stage1 as builder
-FROM node:10-alpine as builder
+FROM node:16-alpine as builder
 
 # copy the package.json to install dependencies
 COPY package.json package-lock.json ./
@@ -27,6 +27,6 @@ RUN rm -rf /usr/share/nginx/html/*
 # Copy from the stahg 1
 COPY --from=builder /react-ui/build /usr/share/nginx/html
 
-EXPOSE 3000 80
+EXPOSE 8080
 
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
