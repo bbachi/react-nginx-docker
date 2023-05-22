@@ -2,7 +2,7 @@
 FROM node:16-alpine as builder
 
 # copy the package.json to install dependencies
-COPY package.json package-lock.json ./
+COPY package.json ./
 
 # Install the dependencies and make the folder
 RUN npm install && mkdir /react-ui && mv ./node_modules ./react-ui
